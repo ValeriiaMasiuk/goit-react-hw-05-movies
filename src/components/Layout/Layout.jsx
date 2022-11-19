@@ -8,6 +8,10 @@ export const Layout = () => {
                 <NavLink to="/" end>
                     Home
                 </NavLink>
+
+                <NavLink to="/movies" end>
+                    Movies
+                </NavLink>
             </nav>
             <Outlet />
         </Box>
