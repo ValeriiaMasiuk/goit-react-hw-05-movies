@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
-import { fetchReviews } from "services/api";
+import { useState, useEffect } from "react";
 
-export const Reviews = () => {
+import { fetchReviews } from "services/api";
+import { ReviewDetails } from "./Reviews.styled";
+
+
+const Reviews = () => {
     const { id } = useParams();
     const [reviews, setReviews] = useState([])
 
@@ -16,11 +18,13 @@ export const Reviews = () => {
             <ul>
                 {reviews.map(review => (
                     <li key={review.id}>
-                        <p>{review.author_details.name ? `${review.author_details.name}` : "Unknown"}  </p>
-                        <p>{review.content}</p>
+                        <ReviewDetails><b>{review.author_details.name ? `${review.author_details.name}` : "Unknown"}</b> </ReviewDetails>
+                        <ReviewDetails>{review.content.length > 0 ? `${review.content}` : "Sorry, there is no reviews:(("}</ReviewDetails>
                     </li>
                 ))}
             </ul>
         </div>
     )
 }
+
+export default Reviews;

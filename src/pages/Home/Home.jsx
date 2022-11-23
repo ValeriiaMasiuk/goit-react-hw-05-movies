@@ -1,13 +1,16 @@
-import { TrendingFilms } from "components/TrendingFilms/TrendingFilms"
+import { TrendingFilms } from "components/TrendingFilms/TrendingFilms";
 
-export const Home = () => {
+import { HomeTitle } from "./Home.styled";
+
+const Home = () => {
     return (
         <div style={{
             paddingRight: '100px',
         }}>
-            <h1>Trending movies</h1>
+            <HomeTitle>Trending films</HomeTitle>
             <TrendingFilms/>
         </div>
     )
-
 }
+
+export default Home;

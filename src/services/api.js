@@ -5,7 +5,7 @@ export const fetchTrendingFilms = () => fetch(`https://api.themoviedb.org/3/tren
         
 export const fetchFilmDetails = (id) => fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`).then(response => response.json())
 
-export const fetchSearchMovies = (query) => fetch(`https://api.themoviedb.org/3/search/movie?query=${query}?api_key=${API_KEY}`).then(response => response.json())
+export const fetchSearchMovies = (query) => fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`).then(response => response.json())
 
 export const fetchCast = (id) => fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`).then(response => response.json())
 

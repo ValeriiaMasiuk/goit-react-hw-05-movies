@@ -1,7 +1,9 @@
 import { SearchMovies } from "components/SearchMovies/SearchMovies";
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 
-export const Movies = () => {
+import { SearchForm, SearchBtn, Input, SearchIcon } from "./Movies.styled";
+
+const Movies = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('query') ?? '';
 
@@ -15,23 +17,21 @@ export const Movies = () => {
     }
 
     setSearchParams({ query: inputValue });
-
     evt.currentTarget.reset();
   };
 
     return (
         <div>
-        <NavLink to='/'>
-            Go back
-            </NavLink>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="searchQuery"></input>
-                <button type="submit">Search</button>
-            </form>
+            <SearchForm onSubmit={handleSubmit}>
+                <Input type="text" name="searchQuery"></Input>
+                <SearchBtn type="submit">
+                    <SearchIcon/>
+                </SearchBtn>
+            </SearchForm>
         {query && <SearchMovies query={query} />}
             <Outlet />
             </div>
     )
-
-
 }
+
+export default Movies

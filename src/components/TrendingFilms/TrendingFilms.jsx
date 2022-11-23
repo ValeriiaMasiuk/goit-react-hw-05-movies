@@ -1,8 +1,10 @@
 import { useEffect, useState} from "react";
-import { fetchTrendingFilms } from "services/api";
 import { useLocation } from "react-router-dom";
 
-import { TrendingFilmCard } from "components/TrendingFilmCard/TrendingFilmCard";
+import { fetchTrendingFilms } from "services/api";
+import { FilmCard } from "components/FilmCard/FilmCard";
+
+import { List, ListItem } from "./TrendingFilms.styled";
 
 export const TrendingFilms = () => {
     const [trendingFilms, setTrendingFilms] = useState([]);
@@ -15,13 +17,13 @@ export const TrendingFilms = () => {
             })
     }, [])
     return (
-            <ul>
+            <List>
                 {trendingFilms.map(film => (
-                    <li key={film.id}>
-                        <TrendingFilmCard film={film} state={{ from: location }}/>
-                    </li>
+                    <ListItem key={film.id}>
+                        <FilmCard film={film} state={{ from: location }}/>
+                    </ListItem>
                 ))}
-            </ul>
+            </List>
     )
 
 }
